@@ -20,9 +20,9 @@ Aplicación móvil desarrollada en Flutter que permite llevar un control básico
 - [SQLite (sqflite)](https://pub.dev/packages/sqflite)
 - [Dart](https://dart.dev/)
 
-## 📱 Capturas de pantalla
 
-*Puedes agregar aquí capturas de tu app si deseas.*
+
+
 
 ## 🚀 Cómo ejecutar este proyecto
 
