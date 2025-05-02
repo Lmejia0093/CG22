@@ -20,9 +20,9 @@ Aplicación móvil desarrollada en Flutter que permite llevar un control básico
 - [SQLite (sqflite)](https://pub.dev/packages/sqflite)
 - [Dart](https://dart.dev/)
 
-## 📱 Capturas de pantalla
 
-*Puedes agregar aquí capturas de tu app si deseas.*
+
+
 
 ## 🚀 Cómo ejecutar este proyecto
 
@@ -31,3 +31,13 @@ Aplicación móvil desarrollada en Flutter que permite llevar un control básico
 ```bash
 git clone https://github.com/Lmejia0093/CG22.git
 cd CG22
+<<<<<<< HEAD
+=======
+
+
+1. Clona este repositorio:
+
+```bash
+git clone https://github.com/tuusuario/control-de-gastos-grupo22.git
+cd control-de-gastos-grupo22
+>>>>>>> b8fd49bb5b7d81cce604e8778f6195c81387280a
