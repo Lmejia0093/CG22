@@ -8,6 +8,7 @@ Aplicación móvil desarrollada en Flutter que permite llevar un control básico
   - Categoría
   - Nombre
   - Monto
+  - Fecha
 - Visualizar todos los gastos registrados en una lista
 - Consultar el total gastado en la pantalla principal
 - Editar un gasto existente
@@ -24,6 +25,13 @@ Aplicación móvil desarrollada en Flutter que permite llevar un control básico
 *Puedes agregar aquí capturas de tu app si deseas.*
 
 ## 🚀 Cómo ejecutar este proyecto
+
+1. Clona este repositorio:
+
+```bash
+git clone https://github.com/Lmejia0093/CG22.git
+cd CG22
+
 
 1. Clona este repositorio:
 
