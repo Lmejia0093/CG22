@@ -2,7 +2,7 @@
       <!-- Agrega el permiso de escritura en almacenamiento aquí -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
-        android:label="prueba1"
+        android:label="CG22"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

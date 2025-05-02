@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Control de Gastos',
+      title: 'Control de Gastos:CG22',
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),

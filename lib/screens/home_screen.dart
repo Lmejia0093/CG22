@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Control de Gastos"),
+        title: const Text("Control de Gastos:CG22"),
         backgroundColor: Colors.deepPurple,
       ),
       backgroundColor: const Color(0xFFEDE7F6), // Fondo lavanda
