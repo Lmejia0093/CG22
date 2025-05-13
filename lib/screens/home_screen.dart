@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Control de Gastos:CG22"),
         backgroundColor: Colors.deepPurple,
       ),
-      backgroundColor: const Color(0xFFEDE7F6), // Fondo lavanda
+      backgroundColor: const Color(0xFFEDE7F6),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepPurple,
         onPressed: () async {
@@ -138,8 +138,63 @@ class _HomeScreenState extends State<HomeScreen> {
                                 IconButton(
                                   icon: const Icon(Icons.delete, color: Colors.redAccent),
                                   onPressed: () async {
-                                    await DBHelper().eliminarGasto(gasto.id!);
-                                    cargarDatos();
+                                    final confirm = await showDialog<bool>(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        title: Row(
+                                          children: const [
+                                            Icon(Icons.warning_amber_rounded,
+                                                color: Colors.deepPurple),
+                                            SizedBox(width: 10),
+                                            Text(
+                                              "¿Estás seguro?",
+                                              style: TextStyle(
+                                                color: Colors.deepPurple,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        content: const Text(
+                                          "Esta acción eliminará el gasto de forma permanente.",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        actionsPadding: const EdgeInsets.only(
+                                            right: 10, bottom: 10),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () =>
+                                                Navigator.of(context).pop(false),
+                                            style: TextButton.styleFrom(
+                                              foregroundColor: Colors.deepPurple,
+                                            ),
+                                            child: const Text("Cancelar"),
+                                          ),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.deepPurple,
+                                              foregroundColor: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.of(context).pop(true),
+                                            child: const Text("Eliminar"),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+
+                                    if (confirm == true) {
+                                      await DBHelper().eliminarGasto(gasto.id!);
+                                      cargarDatos();
+                                    }
                                   },
                                 ),
                               ],
