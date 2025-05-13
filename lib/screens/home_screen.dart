@@ -96,113 +96,115 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(color: Colors.black54, fontSize: 16),
                     ),
                   )
-                : ListView.builder(
-                    itemCount: gastos.length,
-                    itemBuilder: (context, index) {
-                      final gasto = gastos[index];
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
-                        child: Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: ListTile(
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                            title: Text(
-                              "${gasto.categoria}: ${gasto.nombre}",
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.deepPurple,
-                              ),
+                : Padding(
+                    padding: const EdgeInsets.only(bottom: 80), // 🟣 ESPACIO para el FAB
+                    child: ListView.builder(
+                      itemCount: gastos.length,
+                      itemBuilder: (context, index) {
+                        final gasto = gastos[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                          child: Card(
+                            elevation: 4,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                            subtitle: Text(
-                              "${gasto.fecha} - \$${gasto.monto.toStringAsFixed(2)}",
-                              style: const TextStyle(color: Colors.black87),
-                            ),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(
-                                  icon: const Icon(Icons.edit, color: Colors.deepPurple),
-                                  onPressed: () async {
-                                    await Navigator.pushNamed(
-                                      context,
-                                      '/editar',
-                                      arguments: gasto,
-                                    );
-                                    cargarDatos();
-                                  },
+                            child: ListTile(
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                              title: Text(
+                                "${gasto.categoria}: ${gasto.nombre}",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepPurple,
                                 ),
-                                IconButton(
-                                  icon: const Icon(Icons.delete, color: Colors.redAccent),
-                                  onPressed: () async {
-                                    final confirm = await showDialog<bool>(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        backgroundColor: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        title: Row(
-                                          children: const [
-                                            Icon(Icons.warning_amber_rounded,
-                                                color: Colors.deepPurple),
-                                            SizedBox(width: 10),
-                                            Text(
-                                              "¿Estás seguro?",
-                                              style: TextStyle(
-                                                color: Colors.deepPurple,
-                                                fontWeight: FontWeight.bold,
+                              ),
+                              subtitle: Text(
+                                "${gasto.fecha} - \$${gasto.monto.toStringAsFixed(2)}",
+                                style: const TextStyle(color: Colors.black87),
+                              ),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.edit, color: Colors.deepPurple),
+                                    onPressed: () async {
+                                      await Navigator.pushNamed(
+                                        context,
+                                        '/editar',
+                                        arguments: gasto,
+                                      );
+                                      cargarDatos();
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.delete, color: Colors.redAccent),
+                                    onPressed: () async {
+                                      final confirm = await showDialog<bool>(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          backgroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          title: Row(
+                                            children: const [
+                                              Icon(Icons.warning_amber_rounded,
+                                                  color: Colors.deepPurple),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                "¿Estás seguro?",
+                                                style: TextStyle(
+                                                  color: Colors.deepPurple,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
+                                            ],
+                                          ),
+                                          content: const Text(
+                                            "Esta acción eliminará el gasto de forma permanente.",
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          actionsPadding: const EdgeInsets.only(
+                                              right: 10, bottom: 10),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () =>
+                                                  Navigator.of(context).pop(false),
+                                              style: TextButton.styleFrom(
+                                                foregroundColor: Colors.deepPurple,
+                                              ),
+                                              child: const Text("Cancelar"),
+                                            ),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: Colors.deepPurple,
+                                                foregroundColor: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                              ),
+                                              onPressed: () =>
+                                                  Navigator.of(context).pop(true),
+                                              child: const Text("Eliminar"),
                                             ),
                                           ],
                                         ),
-                                        content: const Text(
-                                          "Esta acción eliminará el gasto de forma permanente.",
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        actionsPadding: const EdgeInsets.only(
-                                            right: 10, bottom: 10),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () =>
-                                                Navigator.of(context).pop(false),
-                                            style: TextButton.styleFrom(
-                                              foregroundColor: Colors.deepPurple,
-                                            ),
-                                            child: const Text("Cancelar"),
-                                          ),
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.deepPurple,
-                                              foregroundColor: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                            ),
-                                            onPressed: () =>
-                                                Navigator.of(context).pop(true),
-                                            child: const Text("Eliminar"),
-                                          ),
-                                        ],
-                                      ),
-                                    );
+                                      );
 
-                                    if (confirm == true) {
-                                      await DBHelper().eliminarGasto(gasto.id!);
-                                      cargarDatos();
-                                    }
-                                  },
-                                ),
-                              ],
+                                      if (confirm == true) {
+                                        await DBHelper().eliminarGasto(gasto.id!);
+                                        cargarDatos();
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
           ),
         ],
